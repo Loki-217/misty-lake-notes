@@ -1,0 +1,14 @@
+{
+  "notes": {
+    "../../content/notes/first-entry.md": "---\ntitle: 第一篇手记\ndate: 2026-08-01\ncategory: 日常碎片\ntags: 日常, 湖畔\nsummary: 留给第一篇正式手记的位置。\ncover:\ndraft: true\n---\n\n这里开始写正文。把 `draft` 改为 `false` 后，文章会出现在手记列表和搜索中。\n"
+  },
+  "screenings": {
+    "../../content/screenings/cowboy-bebop.md": "---\ntitle: Cowboy Bebop\norder: 2\npublished: true\ncategory: 动画\ntag: ANIMATION\nglyph: ♬\nsummary: 爵士、太空与无法甩掉的过去。See you, space cowboy…\n---\n\n## Whatever happens, happens.\n\n这里可以继续写最喜欢的单集、角色、配乐或一句短评。\n",
+    "../../content/screenings/hellsing.md": "---\ntitle: Hellsing\norder: 3\npublished: true\ncategory: 动画\ntag: ANIME / MANGA\nglyph: 十\nsummary: 夸张、黑暗、锋利。喜欢它不收敛的风格，以及压倒性的舞台感。\n---\n\n## 不收敛的舞台感\n\n这里可以继续写作品短评、喜欢的角色或相关收藏。\n",
+    "../../content/screenings/league-of-legends.md": "---\ntitle: League of Legends\norder: 4\npublished: true\ncategory: 游戏\ntag: CURRENTLY PLAYING\nglyph: L\nsummary: 目前最常打开的游戏。胜负之外，也享受和朋友共享一局游戏的时间。\n---\n\n## 最近的游戏记录\n\n这里可以写版本体验、英雄心得或和朋友开黑时留下的小故事。\n",
+    "../../content/screenings/touhou-project.md": "---\ntitle: 东方 Project\norder: 1\npublished: true\ncategory: 游戏\ntag: TOUHOU PROJECT\nglyph: ⑨\nsummary: 幻想乡是很多审美与表达的起点。最喜欢琪露诺——认真、莽撞，又理直气壮地快乐。\n---\n\n## 为什么会一直回来\n\n这里可以继续写东方音乐、作品、角色或同人活动。现在先保留为一张可展开的收藏卡。\n"
+  },
+  "projects": {
+    "../../content/projects/seenfetch.md": "---\ntitle: SeenFetch\nyear: 2025\norder: 1\npublished: true\ntype: 毕业设计 / 全栈开发\ntagline: 让网页数据采集从“写规则”变成“看得见的操作”。\nsummary: 一个面向非技术用户的可视化网页数据采集工具。通过实时浏览器画面、交互式选取与大模型字段识别，把复杂配置压缩成直观流程。\ntech: Playwright, CDP, LLM, Docker, Aliyun ECS\nsource: https://github.com/Loki-217/seen-scraper\ndemo:\nmetrics: 10–15::FPS::浏览器实时预览;;40::FIELDS::测试识别字段;;3::RULES::完成采集配置;;3.3×::FASTER::配置效率提升\n---\n\n## 实时预览链路\n\n基于 Playwright + CDP Screencast 搭建浏览器实时预览，稳定维持 10–15 FPS。\n\n## 可视化采集\n\n设计两种交互采集模式，让非技术用户通过点选完成字段与规则配置。\n\n## 智能字段识别\n\n接入两类大模型服务，理解字段语义并对非结构化数据进行自动分类。\n\n## 定时与部署\n\n支持从每 15 分钟到每月的采集任务，并使用 Docker 部署至阿里云 ECS。\n"
+  }
+}

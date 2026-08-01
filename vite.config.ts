@@ -1,12 +1,35 @@
 import vinext from "vinext";
-import { defineConfig } from "vite";
+import { defineConfig, normalizePath, type Plugin } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
+import { generateContentManifest } from "./scripts/generate-content.mjs";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
 const { d1, r2 } = hostingConfig;
+
+function contentManifest(): Plugin {
+  const contentDirectory = normalizePath(`${process.cwd()}/content/`);
+  let pendingGeneration = Promise.resolve();
+
+  const regenerate = (filename: string) => {
+    const normalizedFilename = normalizePath(filename);
+    if (!normalizedFilename.startsWith(contentDirectory) || !normalizedFilename.endsWith(".md")) return;
+    pendingGeneration = pendingGeneration.then(() => generateContentManifest());
+  };
+
+  return {
+    name: "misty-lake-content-manifest",
+    buildStart: generateContentManifest,
+    configureServer(server) {
+      server.watcher.add(contentDirectory);
+      server.watcher.on("add", regenerate);
+      server.watcher.on("change", regenerate);
+      server.watcher.on("unlink", regenerate);
+    },
+  };
+}
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -52,6 +75,7 @@ export default defineConfig(async () => {
         : {}),
     },
     plugins: [
+      contentManifest(),
       vinext(),
       sites(),
       cloudflare({

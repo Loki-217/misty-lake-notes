@@ -27,22 +27,22 @@ export function MarkdownArticle({ body }: { body: string }) {
     list = [];
   };
 
-  lines.forEach((line) => {
+  for (const line of lines) {
     if (line.startsWith("```")) {
       flushParagraph(); flushList();
       if (code) { blocks.push(<pre key={`pre-${blocks.length}`}><code>{code.join("\n")}</code></pre>); code = null; }
       else code = [];
-      return;
+      continue;
     }
-    if (code) { code.push(line); return; }
-    if (!line.trim()) { flushParagraph(); flushList(); return; }
-    if (line.startsWith("### ")) { flushParagraph(); flushList(); blocks.push(<h3 key={`h3-${blocks.length}`}>{inline(line.slice(4))}</h3>); return; }
-    if (line.startsWith("## ")) { flushParagraph(); flushList(); blocks.push(<h2 key={`h2-${blocks.length}`}>{inline(line.slice(3))}</h2>); return; }
-    if (line.startsWith("# ")) { flushParagraph(); flushList(); blocks.push(<h2 key={`h1-${blocks.length}`}>{inline(line.slice(2))}</h2>); return; }
-    if (line.startsWith("> ")) { flushParagraph(); flushList(); blocks.push(<blockquote key={`q-${blocks.length}`}>{inline(line.slice(2))}</blockquote>); return; }
-    if (/^[-*] /.test(line)) { flushParagraph(); list.push(line.slice(2)); return; }
+    if (code) { code.push(line); continue; }
+    if (!line.trim()) { flushParagraph(); flushList(); continue; }
+    if (line.startsWith("### ")) { flushParagraph(); flushList(); blocks.push(<h3 key={`h3-${blocks.length}`}>{inline(line.slice(4))}</h3>); continue; }
+    if (line.startsWith("## ")) { flushParagraph(); flushList(); blocks.push(<h2 key={`h2-${blocks.length}`}>{inline(line.slice(3))}</h2>); continue; }
+    if (line.startsWith("# ")) { flushParagraph(); flushList(); blocks.push(<h2 key={`h1-${blocks.length}`}>{inline(line.slice(2))}</h2>); continue; }
+    if (line.startsWith("> ")) { flushParagraph(); flushList(); blocks.push(<blockquote key={`q-${blocks.length}`}>{inline(line.slice(2))}</blockquote>); continue; }
+    if (/^[-*] /.test(line)) { flushParagraph(); list.push(line.slice(2)); continue; }
     paragraph.push(line.trim());
-  });
+  }
   flushParagraph(); flushList();
   if (code) blocks.push(<pre key={`pre-${blocks.length}`}><code>{code.join("\n")}</code></pre>);
   return <div className="markdown-body">{blocks}</div>;

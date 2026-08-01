@@ -1,3 +1,5 @@
+import contentFiles from "./content.generated.json";
+
 export type BaseEntry = {
   slug: string;
   title: string;
@@ -33,9 +35,9 @@ export type Project = BaseEntry & {
   metrics: ProjectMetric[];
 };
 
-const noteFiles = import.meta.glob("../../content/notes/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
-const screeningFiles = import.meta.glob("../../content/screenings/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
-const projectFiles = import.meta.glob("../../content/projects/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
+const noteFiles: Record<string, string> = contentFiles.notes;
+const screeningFiles: Record<string, string> = contentFiles.screenings;
+const projectFiles: Record<string, string> = contentFiles.projects;
 
 function slugFromPath(path: string) {
   return path.split("/").pop()?.replace(/\.md$/, "") ?? "entry";
