@@ -34,14 +34,17 @@ export default function Home() {
           </div>
 
           <div className="hero-art">
-            <div className="hero-illustration" role="img" aria-label="复古同人志风格的冰精插画" />
+            <div className="hero-illustration" role="img" aria-label="琪露诺 Fumo 玩偶的复古同人志封面视觉" />
             <div className="spell-ring ring-one" />
             <div className="spell-ring ring-two" />
             <NineSecret />
-            <p className="fairy-label">ICE FAIRY / LAKE GUIDE<br/><b>THE STRONGEST? MAYBE.</b></p>
+            <p className="fairy-label">FUMO 09 / LAKE GUIDE<br/><b>THE STRONGEST? DEFINITELY.</b></p>
           </div>
           <div className="cover-stamp">⑨<br/><small>EXTRA STAGE</small></div>
-          <p className="cover-credit">ARTWORK + WORDS + CODE<br/>JASON / MISTY LAKE NOTES</p>
+          <p className="cover-credit">
+            3D SCAN: <a href="https://sketchfab.com/3d-models/project-cirno-fumo-3d-scan-efd2a7f4dbf048c1a18438db7f86c4b9" target="_blank" rel="noreferrer">RENAFOX</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a><br/>
+            DESIGN + WORDS + CODE: JASON
+          </p>
         </div>
         <div className="obi-strip"><b>NEW RELEASE</b><span>日常 / 游戏 / 东方 / 技术</span><i>湖边的不定期个人通信</i></div>
       </section>
